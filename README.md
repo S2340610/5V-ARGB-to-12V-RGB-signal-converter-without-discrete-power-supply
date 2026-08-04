@@ -8,8 +8,7 @@ The firmware decodes the WS2812 stream, takes the **colour of the first LED**, a
 gamma correction, and drives three low-side N-MOSFETs. An optional **strobe effect**
 can fake the "AORUS rotating dashes" look on a spinning fan.
 
-This repo contains both the **firmware** (`code_for_esp32/`) and the **PCB** (Altium
-project at the repo root).
+This repo contains both the **firmware** (`code_for_esp32/`) and the **PCB** (Altium PCB file at the repo root).
 
 > **Scope note:** the output is a *single-colour* analog RGB load (the whole strip shows
 > one colour at a time). It is **not** an addressable 12 V (WS2815) re-transmitter — it
