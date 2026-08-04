@@ -54,11 +54,11 @@ project at the repo root).
 
 ```
 Motherboard 3-pin ARGB ──┬── 5V ──→ boost module ──→ 12V ──→ ring V+
-                         │      └─→ C3 on-board LDO ──→ 3.3V
+                         │      
                          │
                          └── DIN ──→ divider (1k/2k) ──→ GPIO3 (RMT RX)
 
-ESP32-C3 ──→ GPIO4/5/6 (LEDC PWM) ──→ 3× N-MOSFET gate ──→ ring R / G / B
+ESP32-C3 ──→ GPIO4/5/6 (LEDC PWM) ──→ 3× NPN power switches (ULN2003a) ──→ ring R / G / B
 ```
 
 ### Pin map
