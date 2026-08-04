@@ -53,12 +53,12 @@ project at the repo root).
 ### Block diagram
 
 ```
-Motherboard 3-pin ARGB ──┬── 5V ──→ boost module ──→ 12V ──→ ring V+
-                         │      
+Motherboard 3-pin ARGB ──┬── 5V ──→ MT3608 boost module ──→ 12V ──→ ring V+
+                         │
                          │
                          └── DIN ──→ divider (1k/2k) ──→ GPIO3 (RMT RX)
 
-ESP32-C3 ──→ GPIO4/5/6 (LEDC PWM) ──→ 3× NPN power switches (ULN2003a) ──→ ring R / G / B
+ESP32-C3 ──→ GPIO4/5/6 (LEDC PWM) ──→ 3× NPN power switches (ULN2003A) ──→ ring R / G / B
 ```
 
 ### Pin map
@@ -79,7 +79,9 @@ GPIO18/GPIO19 (USB D-/D+).
   **1k/2k**; do **not** use ≥10 kΩ (the 800 kHz edges get rounded and bit decisions fail).
 - MOSFETs are **low-side, driving a common-anode load** → higher PWM duty = brighter
   (non-inverting). Gates have a 10 kΩ pulldown, so they're off at power-up.
-- Set the boost module to **12.0 V under no load** before connecting the ring.
+- **Boost module:** [MT3608 DC-DC Step-Up Converter, 2 A](https://www.snapeda.com/parts/MT3608%20DC-DC%20Step%20Up%20Converter%202A%20Booster%20Module/Generic/view-part/)
+  (symbol/footprint/3D model on SnapEDA) — set it to **12.0 V under no load** before
+  connecting the ring.
 - The board can run standalone from the header's **5 V** (via the C3's LDO); USB is only
   needed for flashing/debugging.
 
