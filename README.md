@@ -8,7 +8,8 @@ The firmware decodes the WS2812 stream, takes the **colour of the first LED**, a
 gamma correction, and drives three low-side N-MOSFETs. An optional **strobe effect**
 can fake the "AORUS rotating dashes" look on a spinning fan.
 
-This repo contains both the **firmware** (`code_for_esp32/`) and the **PCB** (Altium PCB file at the repo root).
+This repo contains both the **firmware** (`code_for_esp32/`) and the **PCB** (Altium
+project at the repo root).
 
 > **Scope note:** the output is a *single-colour* analog RGB load (the whole strip shows
 > one colour at a time). It is **not** an addressable 12 V (WS2815) re-transmitter — it
@@ -19,20 +20,20 @@ This repo contains both the **firmware** (`code_for_esp32/`) and the **PCB** (Al
 ## Repository layout
 
 ```
-argb_converter/                  ← repo root
-├── code_for_esp32/              firmware (PlatformIO / pioarduino)
-│   ├── src/main.cpp
-│   └── platformio.ini
-├── argb_converter.PrjPcb        Altium PCB project
-├── Sheet1.SchDoc                schematic
-├── PCB1.PcbDoc                  PCB layout
-├── argb_converter.BomDoc        bill of materials
-├── .gitignore
+5V-ARGB-to-12V-RGB-signal-converter-without-discrete-power-supply/   ← repo root
+├── PCB1.PcbDoc                        Altium PCB layout
+├── Sheet1.SchDoc                      Altium schematic
+├── code_for_esp32.tar                 firmware archive (PlatformIO / pioarduino)
+├── code_for_esp32c3_with_strobe.tar   firmware archive, strobe FX enabled
 └── README.md
 ```
 
-> Consider also committing a **schematic PDF** and a **2D/3D board render (PNG)** so the
-> design is viewable on GitHub without an Altium license.
+> Firmware is distributed as `.tar` archives rather than a plain `code_for_esp32/` folder —
+> extract the one you need before opening it in VS Code / pioarduino.
+>
+> The Altium **project file** (`.PrjPcb`) and **BOM** (`.BomDoc`) aren't in the repo — only
+> the PCB and schematic documents are. Consider also committing a **schematic PDF** and a
+> **2D/3D board render (PNG)**, so the design is viewable on GitHub without an Altium license.
 
 ---
 
@@ -84,10 +85,10 @@ GPIO18/GPIO19 (USB D-/D+).
 
 ### PCB (Altium)
 
-The board is designed in **Altium Designer**; the project files live at the repo root
-(`argb_converter.PrjPcb`, `Sheet1.SchDoc`, `PCB1.PcbDoc`, `argb_converter.BomDoc`).
-Altium working folders (`History/`, `__Previews/`, `Project Logs*`, `.dist/`) are excluded
-via `.gitignore`.
+The board is designed in **Altium Designer**. Two of the source documents are committed at
+the repo root — the PCB layout (`PCB1.PcbDoc`) and the schematic (`Sheet1.SchDoc`) — but not
+the full Altium project (`.PrjPcb`) or the BOM (`.BomDoc`), so the project can't be reopened
+as-is in Altium; the two `.Doc` files can still be viewed individually.
 
 ---
 
